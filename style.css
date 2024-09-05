@@ -16,6 +16,34 @@ h1 {
     margin: 0;
 }
 
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #444;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a.active {
+    background-color: #007BFF;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
 .search-container {
     margin: 20px;
 }
@@ -49,4 +77,12 @@ a {
 
 a:hover {
     color: #007BFF;
+}
+
+#content section {
+    display: none;
+}
+
+#content section.active {
+    display: block;
 }
