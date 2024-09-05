@@ -1,3 +1,26 @@
+document.getElementById('movies-tab').addEventListener('click', function(event) {
+    event.preventDefault();
+    showTab('movies-section', 'movies-tab');
+});
+
+document.getElementById('series-tab').addEventListener('click', function(event) {
+    event.preventDefault();
+    showTab('series-section', 'series-tab');
+});
+
+function showTab(sectionId, tabId) {
+    document.getElementById('movies-section').style.display = 'none';
+    document.getElementById('series-section').style.display = 'none';
+    document.getElementById('movies-tab').classList.remove('active');
+    document.getElementById('series-tab').classList.remove('active');
+
+    document.getElementById(sectionId).style.display = 'block';
+    document.getElementById(tabId).classList.add('active');
+}
+
+// By default, show the Movies tab
+document.getElementById('movies-section').style.display = 'block';
+
 const searchInput = document.getElementById('search-input');
 const moviesList = document.getElementById('movies-list');
 const seriesList = document.getElementById('series-list');
