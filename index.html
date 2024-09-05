@@ -9,13 +9,20 @@
 <body>
     <header>
         <h1>My Favorite Movies and Series</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="movies-tab" class="active">Movies</a></li>
+                <li><a href="#" id="series-tab">Series</a></li>
+            </ul>
+        </nav>
     </header>
+
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search for Movies or Series...">
     </div>
-    
+
     <div id="content">
-        <section>
+        <section id="movies-section">
             <h2>Movies</h2>
             <ul id="movies-list">
                 <li><a href="https://www.imdb.com/title/tt0111161/" target="_blank">The Shawshank Redemption</a></li>
@@ -24,7 +31,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="series-section" style="display: none;">
             <h2>Series</h2>
             <ul id="series-list">
                 <li><a href="https://www.imdb.com/title/tt0903747/" target="_blank">Breaking Bad</a></li>
