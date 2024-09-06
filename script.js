@@ -1,44 +1,36 @@
-document.getElementById('movies-tab').addEventListener('click', function(event) {
-    event.preventDefault();
-    showTab('movies-section', 'movies-tab');
+document.addEventListener("DOMContentLoaded", function() {
+  // Get the search input element
+  const searchInput = document.querySelector(".search-input");
+
+  // Get the show-all button and all movie elements
+  const showAllButton = document.querySelector(".show-all");
+  const movieElements = document.querySelectorAll(".flex-row-f > div");
+  const movieTitles = document.querySelectorAll(".with-ariana-gran, .with-ariana-gran-a, .with-ariana-gran-b");
+
+  // Add a listener to the search input
+  searchInput.addEventListener("input", function() {
+    const query = searchInput.value.toLowerCase();
+
+    movieElements.forEach((movie, index) => {
+      const title = movieTitles[index].textContent.toLowerCase();
+      if (title.includes(query)) {
+        movie.style.display = "block"; // Show matching movie
+        movieTitles[index].style.display = "block"; // Show matching title
+      } else {
+        movie.style.display = "none"; // Hide non-matching movie
+        movieTitles[index].style.display = "none"; // Hide non-matching title
+      }
+    });
+  });
+
+  // Handle the "Show all" button functionality
+  showAllButton.addEventListener("click", function() {
+    movieElements.forEach((movie) => {
+      movie.style.display = "block"; // Show all movies
+    });
+    movieTitles.forEach((title) => {
+      title.style.display = "block"; // Show all titles
+    });
+    searchInput.value = ""; // Clear the search input
+  });
 });
-
-document.getElementById('series-tab').addEventListener('click', function(event) {
-    event.preventDefault();
-    showTab('series-section', 'series-tab');
-});
-
-function showTab(sectionId, tabId) {
-    document.getElementById('movies-section').style.display = 'none';
-    document.getElementById('series-section').style.display = 'none';
-    document.getElementById('movies-tab').classList.remove('active');
-    document.getElementById('series-tab').classList.remove('active');
-
-    document.getElementById(sectionId).style.display = 'block';
-    document.getElementById(tabId).classList.add('active');
-}
-
-// By default, show the Movies tab
-document.getElementById('movies-section').style.display = 'block';
-
-const searchInput = document.getElementById('search-input');
-const moviesList = document.getElementById('movies-list');
-const seriesList = document.getElementById('series-list');
-
-searchInput.addEventListener('input', function() {
-    const filter = searchInput.value.toLowerCase();
-    filterList(moviesList, filter);
-    filterList(seriesList, filter);
-});
-
-function filterList(list, filter) {
-    const items = list.getElementsByTagName('li');
-    for (let i = 0; i < items.length; i++) {
-        let text = items[i].textContent || items[i].innerText;
-        if (text.toLowerCase().indexOf(filter) > -1) {
-            items[i].style.display = "";
-        } else {
-            items[i].style.display = "none";
-        }
-    }
-}
